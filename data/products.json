@@ -1,13 +1,5 @@
 [
   {
-    "id": "p01",
-    "name": "Croissant au Beurre",
-    "category": "Viennoiseries",
-    "price": 8,
-    "description": "Croissant pur beurre, feuilletage 27 tours, croustillant à l'extérieur et fondant à l'intérieur.",
-    "image": ""
-  },
-  {
     "id": "p02",
     "name": "Pain au Chocolat",
     "category": "Viennoiseries",
