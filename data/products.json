@@ -40,14 +40,6 @@
     "image": ""
   },
   {
-    "id": "p11",
-    "name": "Fraisier",
-    "category": "Gâteaux",
-    "price": 48,
-    "description": "Génoise imbibée, crème mousseline vanille et fraises fraîches entières.",
-    "image": ""
-  },
-  {
     "id": "p12",
     "name": "Royal Chocolat",
     "category": "Gâteaux",
