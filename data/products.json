@@ -38,13 +38,5 @@
     "price": 45,
     "description": "Biscuit joconde, crème au beurre café, ganache chocolat, glaçage brillant.",
     "image": ""
-  },
-  {
-    "id": "p14",
-    "name": "Baguette Tradition",
-    "category": "Pains",
-    "price": 5,
-    "description": "Baguette croustillante à la mie souple, pétrie et cuite chaque jour sur place.",
-    "image": ""
   }
 ]
