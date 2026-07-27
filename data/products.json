@@ -40,14 +40,6 @@
     "image": ""
   },
   {
-    "id": "p12",
-    "name": "Royal Chocolat",
-    "category": "Gâteaux",
-    "price": 50,
-    "description": "Dacquoise noisette, praliné croustillant et mousse au chocolat noir.",
-    "image": ""
-  },
-  {
     "id": "p13",
     "name": "Pain de Campagne",
     "category": "Pains",
