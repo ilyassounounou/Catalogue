@@ -40,14 +40,6 @@
     "image": ""
   },
   {
-    "id": "p13",
-    "name": "Pain de Campagne",
-    "category": "Pains",
-    "price": 18,
-    "description": "Pain au levain naturel, croûte épaisse et mie alvéolée, cuisson au four à sole.",
-    "image": ""
-  },
-  {
     "id": "p14",
     "name": "Baguette Tradition",
     "category": "Pains",
