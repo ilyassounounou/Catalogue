@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "id": "p01",
+    "name": "mille-feuille",
+    "category": "cake",
+    "price": 12,
+    "description": "",
+    "image": "images/5913466150757451774-121-1785178892397.jpg"
+  }
+]
