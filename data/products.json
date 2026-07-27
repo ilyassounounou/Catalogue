@@ -6,5 +6,13 @@
     "price": 12,
     "description": "",
     "image": "images/5913466150757451774-121-1785178892397.jpg"
+  },
+  {
+    "id": "p02",
+    "name": "coockies",
+    "category": "patisserie",
+    "price": 8,
+    "description": "",
+    "image": "images/5913466150757451755-121-1785180345139.jpg"
   }
 ]
