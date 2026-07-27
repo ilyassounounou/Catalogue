@@ -1,13 +1,5 @@
 [
   {
-    "id": "p03",
-    "name": "Chausson aux Pommes",
-    "category": "Viennoiseries",
-    "price": 10,
-    "description": "Feuilletage doré garni d'une compotée de pommes fraîches à la cannelle.",
-    "image": ""
-  },
-  {
     "id": "p04",
     "name": "Tarte au Citron Meringuée",
     "category": "Tartes",
