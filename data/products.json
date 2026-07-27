@@ -14,13 +14,5 @@
     "price": 6,
     "description": "Coques croustillantes, ganache pistache de Sicile onctueuse.",
     "image": ""
-  },
-  {
-    "id": "p08",
-    "name": "Macaron Framboise",
-    "category": "Macarons",
-    "price": 6,
-    "description": "Coques légères et confit de framboises fraîches acidulé.",
-    "image": ""
   }
 ]
