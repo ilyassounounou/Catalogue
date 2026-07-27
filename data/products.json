@@ -14,5 +14,13 @@
     "price": 8,
     "description": "",
     "image": "images/5913466150757451755-121-1785180345139.jpg"
+  },
+  {
+    "id": "p03",
+    "name": "p.pain chocolat",
+    "category": "vinnoiserie",
+    "price": 3,
+    "description": "",
+    "image": "images/5913466150757451806-121-1785180753661.jpg"
   }
 ]
