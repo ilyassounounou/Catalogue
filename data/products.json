@@ -1,13 +1,5 @@
 [
   {
-    "id": "p05",
-    "name": "Tarte aux Fraises",
-    "category": "Tartes",
-    "price": 40,
-    "description": "Fond sablé, crème pâtissière vanille et fraises fraîches de saison.",
-    "image": ""
-  },
-  {
     "id": "p06",
     "name": "Tarte Tatin",
     "category": "Tartes",
