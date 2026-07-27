@@ -22,13 +22,5 @@
     "price": 6,
     "description": "Coques légères et confit de framboises fraîches acidulé.",
     "image": ""
-  },
-  {
-    "id": "p09",
-    "name": "Macaron Chocolat",
-    "category": "Macarons",
-    "price": 6,
-    "description": "Ganache au chocolat noir 70% sur coques moelleuses.",
-    "image": ""
   }
 ]
