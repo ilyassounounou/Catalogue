@@ -70,13 +70,5 @@
     "price": 5,
     "description": "Baguette croustillante à la mie souple, pétrie et cuite chaque jour sur place.",
     "image": ""
-  },
-  {
-    "id": "p15",
-    "name": "Éclair au Café",
-    "category": "Viennoiseries",
-    "price": 15,
-    "description": "Pâte à choux garnie de crème pâtissière au café et glaçage fondant.",
-    "image": ""
   }
 ]
