@@ -1,13 +1,5 @@
 [
   {
-    "id": "p06",
-    "name": "Tarte Tatin",
-    "category": "Tartes",
-    "price": 38,
-    "description": "Pommes caramélisées à sec puis cuites sous une pâte feuilletée croustillante.",
-    "image": ""
-  },
-  {
     "id": "p07",
     "name": "Macaron Pistache",
     "category": "Macarons",
