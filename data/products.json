@@ -1,13 +1,5 @@
 [
   {
-    "id": "p02",
-    "name": "Pain au Chocolat",
-    "category": "Viennoiseries",
-    "price": 9,
-    "description": "Pâte feuilletée pur beurre garnie de deux bâtons de chocolat noir intense.",
-    "image": ""
-  },
-  {
     "id": "p03",
     "name": "Chausson aux Pommes",
     "category": "Viennoiseries",
