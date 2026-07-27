@@ -30,13 +30,5 @@
     "price": 6,
     "description": "Ganache au chocolat noir 70% sur coques moelleuses.",
     "image": ""
-  },
-  {
-    "id": "p10",
-    "name": "Opéra",
-    "category": "Gâteaux",
-    "price": 45,
-    "description": "Biscuit joconde, crème au beurre café, ganache chocolat, glaçage brillant.",
-    "image": ""
   }
 ]
