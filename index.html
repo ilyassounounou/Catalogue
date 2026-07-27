@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Ami Doré — Catalogue</title>
+<meta name="description" content="Catalogue de pâtisserie L'Ami Doré — viennoiseries, tartes, macarons, gâteaux et pains artisanaux.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-inner">
+    <p class="eyebrow">Pâtisserie artisanale · Casablanca</p>
+    <h1 class="brand">L'Ami Doré</h1>
+    <p class="tagline">Chaque douceur porte l'empreinte d'un geste patient</p>
+    <svg class="swirl-divider" viewBox="0 0 240 24" aria-hidden="true">
+      <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
+            fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ============ TOOLBAR ============ -->
+<div class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-search">
+        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+        <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <input type="text" id="searchInput" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit">
+    </div>
+
+    <div class="chips" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
+      <button class="chip is-active" data-category="Tous">Tous</button>
+    </div>
+
+    <div class="sort-field">
+      <label for="sortSelect">Trier</label>
+      <select id="sortSelect">
+        <option value="default">Par défaut</option>
+        <option value="price-asc">Prix croissant</option>
+        <option value="price-desc">Prix décroissant</option>
+        <option value="name-asc">Nom A–Z</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CATALOGUE GRID ============ -->
+<main class="catalogue-wrap">
+  <p class="result-count" id="resultCount"></p>
+  <div class="grid" id="productGrid"></div>
+  <p class="empty-state" id="emptyState" hidden>Aucune gourmandise ne correspond à votre recherche.</p>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <svg class="swirl-divider small" viewBox="0 0 240 24" aria-hidden="true">
+    <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
+          fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+  <p>L'Ami Doré — Catalogue en ligne · Prix en MAD</p>
+</footer>
+
+<!-- ============ PRODUCT MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-body">
+      <p class="modal-category" id="modalCategory"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-price" id="modalPrice"></p>
+    </div>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>

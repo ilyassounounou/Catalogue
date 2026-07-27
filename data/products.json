@@ -1,0 +1,122 @@
+[
+  {
+    "id": "p01",
+    "name": "Croissant au Beurre",
+    "category": "Viennoiseries",
+    "price": 8,
+    "description": "Croissant pur beurre, feuilletage 27 tours, croustillant à l'extérieur et fondant à l'intérieur.",
+    "image": ""
+  },
+  {
+    "id": "p02",
+    "name": "Pain au Chocolat",
+    "category": "Viennoiseries",
+    "price": 9,
+    "description": "Pâte feuilletée pur beurre garnie de deux bâtons de chocolat noir intense.",
+    "image": ""
+  },
+  {
+    "id": "p03",
+    "name": "Chausson aux Pommes",
+    "category": "Viennoiseries",
+    "price": 10,
+    "description": "Feuilletage doré garni d'une compotée de pommes fraîches à la cannelle.",
+    "image": ""
+  },
+  {
+    "id": "p04",
+    "name": "Tarte au Citron Meringuée",
+    "category": "Tartes",
+    "price": 35,
+    "description": "Pâte sablée, crème citron acidulée et meringue italienne légèrement flambée.",
+    "image": ""
+  },
+  {
+    "id": "p05",
+    "name": "Tarte aux Fraises",
+    "category": "Tartes",
+    "price": 40,
+    "description": "Fond sablé, crème pâtissière vanille et fraises fraîches de saison.",
+    "image": ""
+  },
+  {
+    "id": "p06",
+    "name": "Tarte Tatin",
+    "category": "Tartes",
+    "price": 38,
+    "description": "Pommes caramélisées à sec puis cuites sous une pâte feuilletée croustillante.",
+    "image": ""
+  },
+  {
+    "id": "p07",
+    "name": "Macaron Pistache",
+    "category": "Macarons",
+    "price": 6,
+    "description": "Coques croustillantes, ganache pistache de Sicile onctueuse.",
+    "image": ""
+  },
+  {
+    "id": "p08",
+    "name": "Macaron Framboise",
+    "category": "Macarons",
+    "price": 6,
+    "description": "Coques légères et confit de framboises fraîches acidulé.",
+    "image": ""
+  },
+  {
+    "id": "p09",
+    "name": "Macaron Chocolat",
+    "category": "Macarons",
+    "price": 6,
+    "description": "Ganache au chocolat noir 70% sur coques moelleuses.",
+    "image": ""
+  },
+  {
+    "id": "p10",
+    "name": "Opéra",
+    "category": "Gâteaux",
+    "price": 45,
+    "description": "Biscuit joconde, crème au beurre café, ganache chocolat, glaçage brillant.",
+    "image": ""
+  },
+  {
+    "id": "p11",
+    "name": "Fraisier",
+    "category": "Gâteaux",
+    "price": 48,
+    "description": "Génoise imbibée, crème mousseline vanille et fraises fraîches entières.",
+    "image": ""
+  },
+  {
+    "id": "p12",
+    "name": "Royal Chocolat",
+    "category": "Gâteaux",
+    "price": 50,
+    "description": "Dacquoise noisette, praliné croustillant et mousse au chocolat noir.",
+    "image": ""
+  },
+  {
+    "id": "p13",
+    "name": "Pain de Campagne",
+    "category": "Pains",
+    "price": 18,
+    "description": "Pain au levain naturel, croûte épaisse et mie alvéolée, cuisson au four à sole.",
+    "image": ""
+  },
+  {
+    "id": "p14",
+    "name": "Baguette Tradition",
+    "category": "Pains",
+    "price": 5,
+    "description": "Baguette croustillante à la mie souple, pétrie et cuite chaque jour sur place.",
+    "image": ""
+  },
+  {
+    "id": "p15",
+    "name": "Éclair au Café",
+    "category": "Viennoiseries",
+    "price": 15,
+    "description": "Pâte à choux garnie de crème pâtissière au café et glaçage fondant.",
+    "image": ""
+  }
+]
