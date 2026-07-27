@@ -1,13 +1,5 @@
 [
   {
-    "id": "p04",
-    "name": "Tarte au Citron Meringuée",
-    "category": "Tartes",
-    "price": 35,
-    "description": "Pâte sablée, crème citron acidulée et meringue italienne légèrement flambée.",
-    "image": ""
-  },
-  {
     "id": "p05",
     "name": "Tarte aux Fraises",
     "category": "Tartes",
