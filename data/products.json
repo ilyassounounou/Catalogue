@@ -22,5 +22,13 @@
     "price": 3,
     "description": "",
     "image": "images/5913466150757451806-121-1785180753661.jpg"
+  },
+  {
+    "id": "p04",
+    "name": "dounat",
+    "category": "sale",
+    "price": 10,
+    "description": "",
+    "image": "images/573697456-17849812251585470-2058103834366467600-n-1785268982965.webp"
   }
 ]
