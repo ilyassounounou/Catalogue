@@ -38,5 +38,13 @@
     "price": 17,
     "description": "",
     "image": "images/565578096-17847374775585470-4166763591642800622-n-1785431704353.webp"
+  },
+  {
+    "id": "p06",
+    "name": "besbousa",
+    "category": "cake",
+    "price": 7,
+    "description": "",
+    "image": "images/567405708-17847650871585470-7480954707356952941-n-1785431772000.webp"
   }
 ]
