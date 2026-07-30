@@ -30,5 +30,13 @@
     "price": 10,
     "description": "",
     "image": "images/573697456-17849812251585470-2058103834366467600-n-1785268982965.webp"
+  },
+  {
+    "id": "p05",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 17,
+    "description": "",
+    "image": "images/565578096-17847374775585470-4166763591642800622-n-1785431704353.webp"
   }
 ]
