@@ -4,7 +4,7 @@
     "name": "mille-feuille",
     "category": "cake",
     "price": 12,
-    "description": "",
+    "description": "Mille-feuille croustillant à la crème pâtissière",
     "image": "images/5913466150757451774-121-1785178892397.jpg"
   },
   {
@@ -12,7 +12,7 @@
     "name": "coockies",
     "category": "patisserie",
     "price": 8,
-    "description": "",
+    "description": "Cookies gourmands aux pépites de chocolat",
     "image": "images/5913466150757451755-121-1785180345139.jpg"
   },
   {
@@ -20,7 +20,7 @@
     "name": "p.pain chocolat",
     "category": "vinnoiserie",
     "price": 3,
-    "description": "",
+    "description": "Pain au chocolat feuilleté",
     "image": "images/5913466150757451806-121-1785180753661.jpg"
   },
   {
@@ -28,7 +28,7 @@
     "name": "dounat",
     "category": "sale",
     "price": 10,
-    "description": "",
+    "description": "Donut moelleux au sucre",
     "image": "images/573697456-17849812251585470-2058103834366467600-n-1785268982965.webp"
   },
   {
@@ -36,7 +36,7 @@
     "name": "tranche",
     "category": "patisserie",
     "price": 17,
-    "description": "",
+    "description": "Tranche de gâteau gourmand",
     "image": "images/565578096-17847374775585470-4166763591642800622-n-1785431704353.webp"
   },
   {
@@ -44,7 +44,7 @@
     "name": "besbousa",
     "category": "cake",
     "price": 7,
-    "description": "",
+    "description": "Besbousa moelleuse à la semoule",
     "image": "images/567405708-17847650871585470-7480954707356952941-n-1785431772000.webp"
   },
   {
@@ -52,7 +52,7 @@
     "name": "burger",
     "category": "sale",
     "price": 15,
-    "description": "",
+    "description": "Burger maison avec pain brioché",
     "image": "images/569863910-17848485201585470-3463515454404754082-n-1785952493195.webp"
   }
 ]

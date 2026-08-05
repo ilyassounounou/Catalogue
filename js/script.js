@@ -1,209 +1,176 @@
-/* ==========================================================
-   L'AMI DORÉ — Catalogue logic
-   Edit data/products.json to add / remove / change products.
-   ========================================================== */
+// ============================================================
+// تحميل المنتجات من ملف JSON
+// ============================================================
+let products = [];
+let currentCategory = "Tous";
+let currentSearch = "";
+let currentSort = "default";
+let filteredProducts = [];
 
-const state = {
-  products: [],
-  activeCategory: "Tous",
-  searchTerm: "",
-  sortBy: "default"
-};
+// ============================================================
+// DOM REFS
+// ============================================================
+const grid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+const chipsContainer = document.getElementById("categoryChips");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
 
-const els = {
-  grid: document.getElementById("productGrid"),
-  chips: document.getElementById("categoryChips"),
-  search: document.getElementById("searchInput"),
-  sort: document.getElementById("sortSelect"),
-  resultCount: document.getElementById("resultCount"),
-  emptyState: document.getElementById("emptyState"),
-  modalOverlay: document.getElementById("modalOverlay"),
-  modalClose: document.getElementById("modalClose"),
-  modalMedia: document.getElementById("modalMedia"),
-  modalCategory: document.getElementById("modalCategory"),
-  modalTitle: document.getElementById("modalTitle"),
-  modalDesc: document.getElementById("modalDesc"),
-  modalPrice: document.getElementById("modalPrice"),
-};
+// Modal refs
+const modalOverlay = document.getElementById("modalOverlay");
+const modalClose = document.getElementById("modalClose");
+const modalMedia = document.getElementById("modalMedia");
+const modalCategory = document.getElementById("modalCategory");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalPrice = document.getElementById("modalPrice");
 
-/* Hauteur fixe des images/vignettes, identique pour toutes les cartes */
-const CARD_IMAGE_HEIGHT = 240; // px — change cette valeur si besoin
-
-/* ---------- small swirl icon reused on every card ---------- */
-const SWIRL_SVG = `
-<svg class="card-swirl" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <path d="M4 30 C 12 14, 22 14, 28 30 S 44 46, 52 30" fill="none"
-        stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity="0.9"/>
-</svg>`;
-
-/* ---------- load data ---------- */
+// ============================================================
+// تحميل البيانات
+// ============================================================
 async function loadProducts() {
   try {
-    const res = await fetch("data/products.json");
-    if (!res.ok) throw new Error("network response not ok");
-    state.products = await res.json();
-  } catch (err) {
-    els.grid.innerHTML = `<p class="empty-state">Impossible de charger le catalogue. Si vous testez en local, lancez un petit serveur (ex: <code>python3 -m http.server</code>) plutôt que d'ouvrir le fichier directement.</p>`;
-    console.error(err);
-    return;
+    const response = await fetch('products.json');
+    if (!response.ok) {
+      throw new Error('فشل تحميل المنتجات');
+    }
+    products = await response.json();
+    console.log('تم تحميل المنتجات:', products.length);
+    renderChips();
+    filterAndSort();
+  } catch (error) {
+    console.error('خطأ في تحميل المنتجات:', error);
+    // بيانات افتراضية في حالة الخطأ
+    products = [
+      { id: "1", name: "مثال", category: "مثال", price: 10, description: "منتج افتراضي", image: "" }
+    ];
+    renderChips();
+    filterAndSort();
   }
-  buildCategoryChips();
-  render();
 }
 
-/* ---------- category chips (built dynamically from data) ---------- */
-function buildCategoryChips() {
-  const categories = ["Tous", ...new Set(state.products.map(p => p.category))];
-  els.chips.innerHTML = categories.map(cat => `
-    <button class="chip ${cat === "Tous" ? "is-active" : ""}" data-category="${cat}">${cat}</button>
+// ============================================================
+// وظائف العرض
+// ============================================================
+function getCategories() {
+  const cats = products.map(p => p.category);
+  return ["Tous", ...new Set(cats)];
+}
+
+function renderChips() {
+  const categories = getCategories();
+  chipsContainer.innerHTML = "";
+  categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "chip" + (cat === currentCategory ? " is-active" : "");
+    btn.dataset.category = cat;
+    btn.textContent = cat;
+    chipsContainer.appendChild(btn);
+  });
+}
+
+function filterAndSort() {
+  let result = products.filter(p => {
+    const matchCategory = currentCategory === "Tous" || p.category === currentCategory;
+    const searchLower = currentSearch.trim().toLowerCase();
+    const matchSearch = p.name.toLowerCase().includes(searchLower) ||
+                        (p.description && p.description.toLowerCase().includes(searchLower)) ||
+                        p.category.toLowerCase().includes(searchLower);
+    return matchCategory && matchSearch;
+  });
+
+  // Trier
+  if (currentSort === "price-asc") result.sort((a, b) => a.price - b.price);
+  else if (currentSort === "price-desc") result.sort((a, b) => b.price - a.price);
+  else if (currentSort === "name-asc") result.sort((a, b) => a.name.localeCompare(b.name));
+
+  filteredProducts = result;
+  renderGrid();
+}
+
+function renderGrid() {
+  if (filteredProducts.length === 0) {
+    grid.innerHTML = "";
+    emptyState.hidden = false;
+    resultCount.textContent = "0 produits";
+    return;
+  }
+  emptyState.hidden = true;
+  resultCount.textContent = `${filteredProducts.length} produit${filteredProducts.length > 1 ? 's' : ''}`;
+
+  grid.innerHTML = filteredProducts.map(p => `
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card h-100" data-id="${p.id}">
+        <img src="${p.image}" class="card-img-top object-fit-cover" style="height:240px" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/600x400?text=Image+non+disponible'">
+        <div class="card-body d-flex flex-column">
+          <h3 class="card-title">${p.name}</h3>
+          <p class="card-text flex-grow-1">${p.description || 'Description non disponible'}</p>
+          <p class="fw-bold mb-0">${p.price} MAD</p>
+        </div>
+      </div>
+    </div>
   `).join("");
 
-  els.chips.querySelectorAll(".chip").forEach(btn => {
-    btn.addEventListener("click", () => {
-      state.activeCategory = btn.dataset.category;
-      els.chips.querySelectorAll(".chip").forEach(c => c.classList.remove("is-active"));
-      btn.classList.add("is-active");
-      render();
+  // Attacher l'événement "click" sur chaque carte pour ouvrir le modal
+  document.querySelectorAll("#productGrid .card").forEach(card => {
+    card.addEventListener("click", function(e) {
+      const id = this.dataset.id;
+      const product = products.find(p => p.id === id);
+      if (product) openModal(product);
     });
   });
 }
 
-/* ---------- filtering + sorting ---------- */
-function getVisibleProducts() {
-  let list = [...state.products];
-
-  if (state.activeCategory !== "Tous") {
-    list = list.filter(p => p.category === state.activeCategory);
-  }
-
-  if (state.searchTerm.trim() !== "") {
-    const q = state.searchTerm.trim().toLowerCase();
-    list = list.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q)
-    );
-  }
-
-  switch (state.sortBy) {
-    case "price-asc":
-      list.sort((a, b) => a.price - b.price);
-      break;
-    case "price-desc":
-      list.sort((a, b) => b.price - a.price);
-      break;
-    case "name-asc":
-      list.sort((a, b) => a.name.localeCompare(b.name, "fr"));
-      break;
-  }
-
-  return list;
-}
-
-/* ---------- render grid ---------- */
-function render() {
-  const list = getVisibleProducts();
-
-  els.resultCount.textContent =
-    list.length + (list.length > 1 ? " gourmandises" : " gourmandise");
-
-  els.emptyState.hidden = list.length !== 0;
-  els.grid.hidden = list.length === 0;
-
-  els.grid.innerHTML = list.map(cardTemplate).join("");
-
-  els.grid.querySelectorAll(".card").forEach(card => {
-    card.addEventListener("click", () => openModal(card.dataset.id));
-  });
-}
-
-/* Média utilisé DANS la carte (vignette de taille fixe) */
-function mediaContent(product) {
-  if (product.image && product.image.trim() !== "") {
-    return `<img src="${product.image}" alt="${product.name}" loading="lazy" class="w-100 h-100 object-fit-cover">`;
-  }
-  return `
-    <div class="w-100 h-100 d-flex align-items-center justify-content-center position-relative bg-secondary-subtle">
-      <span class="monogram display-4">${product.name.charAt(0)}</span>${SWIRL_SVG}
-    </div>`;
-}
-
-/* Média utilisé dans la MODALE (peut être plus grand, pas de contrainte de hauteur) */
-function modalMediaContent(product) {
-  if (product.image && product.image.trim() !== "") {
-    return `<img src="${product.image}" alt="${product.name}" class="w-100 h-100 object-fit-cover">`;
-  }
-  return `
-    <div class="w-100 h-100 d-flex align-items-center justify-content-center position-relative bg-secondary-subtle">
-      <span class="monogram display-1">${product.name.charAt(0)}</span>${SWIRL_SVG}
-    </div>`;
-}
-
-/* Carte Bootstrap : col-12 (mobile) / col-sm-6 (tablette) / col-lg-4 (desktop)
-   => 3 cartes par ligne sur grand écran, responsive.
-   h-100 sur .card => toutes les cartes d'une même ligne ont la même hauteur. */
-function cardTemplate(product) {
-  return `
-    <div class="col-12 col-sm-6 col-lg-4">
-      <article class="card h-100" data-id="${product.id}" data-category="${product.category}" tabindex="0">
-        <div class="overflow-hidden" style="height:${CARD_IMAGE_HEIGHT}px;">
-          ${mediaContent(product)}
-        </div>
-        <div class="card-body d-flex flex-column">
-          <span class="card-cat badge text-bg-secondary align-self-start mb-2">${product.category}</span>
-          <h3 class="card-name h5">${product.name}</h3>
-          <p class="card-desc flex-grow-1">${product.description}</p>
-          <div class="card-footer bg-transparent border-0 px-0 pb-0 d-flex justify-content-between align-items-center">
-            <span class="card-price fw-bold">${product.price} <sup>MAD</sup></span>
-          </div>
-        </div>
-      </article>
-    </div>
-  `;
-}
-
-/* ---------- modal ---------- */
-function openModal(id) {
-  const product = state.products.find(p => p.id === id);
-  if (!product) return;
-
-  document.querySelector(".modal").dataset.category = product.category;
-  els.modalMedia.innerHTML = modalMediaContent(product);
-  els.modalCategory.textContent = product.category;
-  els.modalTitle.textContent = product.name;
-  els.modalDesc.textContent = product.description;
-  els.modalPrice.textContent = `${product.price} MAD`;
-
-  els.modalOverlay.hidden = false;
+// ============================================================
+// وظائف المودال
+// ============================================================
+function openModal(product) {
+  modalMedia.innerHTML = `<img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/600x400?text=Image+non+disponible'">`;
+  modalCategory.textContent = product.category;
+  modalTitle.textContent = product.name;
+  modalDesc.textContent = product.description || 'Description non disponible';
+  modalPrice.textContent = `${product.price} MAD`;
+  modalOverlay.hidden = false;
   document.body.style.overflow = "hidden";
 }
 
 function closeModal() {
-  els.modalOverlay.hidden = true;
+  modalOverlay.hidden = true;
   document.body.style.overflow = "";
 }
 
-els.modalClose.addEventListener("click", closeModal);
-els.modalOverlay.addEventListener("click", (e) => {
-  if (e.target === els.modalOverlay) closeModal();
+// ============================================================
+// الأحداث
+// ============================================================
+chipsContainer.addEventListener("click", function(e) {
+  const chip = e.target.closest(".chip");
+  if (!chip) return;
+  document.querySelectorAll(".chip").forEach(c => c.classList.remove("is-active"));
+  chip.classList.add("is-active");
+  currentCategory = chip.dataset.category;
+  filterAndSort();
 });
-document.addEventListener("keydown", (e) => {
+
+searchInput.addEventListener("input", function() {
+  currentSearch = this.value;
+  filterAndSort();
+});
+
+sortSelect.addEventListener("change", function() {
+  currentSort = this.value;
+  filterAndSort();
+});
+
+modalClose.addEventListener("click", closeModal);
+modalOverlay.addEventListener("click", function(e) {
+  if (e.target === modalOverlay) closeModal();
+});
+document.addEventListener("keydown", function(e) {
   if (e.key === "Escape") closeModal();
 });
 
-/* ---------- search & sort listeners ---------- */
-let searchTimeout;
-els.search.addEventListener("input", (e) => {
-  clearTimeout(searchTimeout);
-  searchTimeout = setTimeout(() => {
-    state.searchTerm = e.target.value;
-    render();
-  }, 120);
-});
-
-els.sort.addEventListener("change", (e) => {
-  state.sortBy = e.target.value;
-  render();
-});
-
-/* ---------- init ---------- */
+// ============================================================
+// بدء التطبيق
+// ============================================================
 loadProducts();
