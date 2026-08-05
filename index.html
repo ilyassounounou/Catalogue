@@ -1,16 +1,427 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>L'Ami Doré — Catalogue</title>
-<meta name="description" content="Catalogue de pâtisserie L'Ami Doré — viennoiseries, tartes, macarons, gâteaux et pains artisanaux.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Ami Doré — Catalogue</title>
+  <meta name="description" content="Catalogue de pâtisserie L'Ami Doré — viennoiseries, tartes, macarons, gâteaux et pains artisanaux." />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Fonts : Parisienne + Jost -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="css/style.css">
+  <!-- Bootstrap 5.3.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* ===== STYLE FRANÇAIS, ÉLÉGANT ET CHALEUREUX ===== */
+    :root {
+      --gold: #b78c5a;
+      --gold-light: #d9b382;
+      --cream: #fcf7f0;
+      --taupe: #8a7a6a;
+      --charcoal: #2e2a27;
+      --border-light: #ede6dc;
+      --shadow-soft: 0 8px 24px rgba(44, 38, 32, 0.06);
+      --font-serif: 'Parisienne', cursive;
+      --font-sans: 'Jost', sans-serif;
+    }
+
+    body {
+      background-color: var(--cream);
+      font-family: var(--font-sans);
+      color: var(--charcoal);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* --- HEADER : esprit parisien --- */
+    .site-header {
+      text-align: center;
+      padding: 2.8rem 1.5rem 1.8rem;
+      background: linear-gradient(180deg, #fffcf7 0%, var(--cream) 100%);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--taupe);
+      margin-bottom: 0.4rem;
+      font-weight: 300;
+    }
+
+    .brand {
+      font-family: var(--font-serif);
+      font-size: 3.8rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+      text-shadow: 1px 1px 0 rgba(183, 140, 90, 0.1);
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--taupe);
+      margin-top: 0.2rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-style: italic;
+    }
+
+    .swirl-divider {
+      display: block;
+      margin: 1.2rem auto 0;
+      width: 160px;
+      height: 24px;
+    }
+    .swirl-divider path {
+      stroke: var(--gold);
+      stroke-width: 1.8;
+    }
+
+    /* --- TOOLBAR : recherche + chips + tri --- */
+    .toolbar-wrap {
+      background: #fffcf7;
+      border-bottom: 1px solid var(--border-light);
+      padding: 1.2rem 0;
+    }
+
+    .search-field .icon-search {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--taupe);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .search-field input {
+      background-color: #fffcf7;
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      padding: 0.6rem 1rem 0.6rem 2.8rem;
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      transition: all 0.2s;
+      font-weight: 300;
+      box-shadow: var(--shadow-soft);
+    }
+    .search-field input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(183, 140, 90, 0.15);
+      background: white;
+      outline: none;
+    }
+    .search-field input::placeholder {
+      color: #b7aaa0;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* Chips (filtres) */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.6rem;
+    }
+
+    .chip {
+      background: transparent;
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--taupe);
+      transition: all 0.2s;
+      cursor: pointer;
+      background: #fffcf7;
+      font-family: var(--font-sans);
+    }
+    .chip:hover {
+      border-color: var(--gold-light);
+      color: var(--charcoal);
+      background: #fffaf2;
+    }
+    .chip.is-active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: white;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(183, 140, 90, 0.2);
+    }
+
+    /* Tri */
+    .sort-field {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.8rem;
+    }
+    .sort-field label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--taupe);
+      font-weight: 300;
+      margin: 0;
+    }
+    .sort-field select {
+      border: 1px solid var(--border-light);
+      border-radius: 60px;
+      padding: 0.45rem 2rem 0.45rem 1.2rem;
+      font-size: 0.85rem;
+      background: #fffcf7;
+      color: var(--charcoal);
+      font-weight: 300;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a7a6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      transition: border 0.2s;
+    }
+    .sort-field select:focus {
+      border-color: var(--gold);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(183, 140, 90, 0.12);
+    }
+
+    /* --- CATALOGUE GRID --- */
+    .catalogue-wrap {
+      padding: 2.5rem 1.5rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .result-count {
+      font-size: 0.9rem;
+      color: var(--taupe);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.8rem;
+      padding-left: 0.4rem;
+      border-left: 2px solid var(--gold-light);
+      padding-left: 1rem;
+    }
+
+    /* CARTES : élégance française */
+    .card {
+      background: white;
+      border: none;
+      border-radius: 20px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(44, 38, 32, 0.08);
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      background-color: #f2ebe2;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .card-body {
+      padding: 1.4rem 1.4rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: var(--taupe);
+      font-weight: 300;
+      flex-grow: 1;
+      margin: 0.3rem 0 0.8rem;
+      line-height: 1.5;
+    }
+
+    .card .fw-bold {
+      font-weight: 500 !important;
+      color: var(--gold);
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--border-light);
+      padding-top: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--taupe);
+      font-weight: 300;
+      padding: 4rem 1rem;
+      background: #f9f4ed;
+      border-radius: 40px;
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* --- FOOTER --- */
+    .site-footer {
+      text-align: center;
+      padding: 2.2rem 1.5rem 2.5rem;
+      border-top: 1px solid var(--border-light);
+      background: #fffcf7;
+      color: var(--taupe);
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    .site-footer .swirl-divider.small {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    /* --- MODAL (style raffiné) --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 38, 32, 0.5);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1050;
+    }
+    .modal {
+      background: white;
+      max-width: 540px;
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 40px 64px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      position: relative;
+      animation: modalFade 0.25s ease;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.85);
+      border: none;
+      font-size: 2rem;
+      line-height: 1;
+      width: 40px;
+      height: 40px;
+      border-radius: 60px;
+      color: var(--charcoal);
+      cursor: pointer;
+      transition: 0.2s;
+      z-index: 10;
+      font-weight: 300;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+    .modal-close:hover {
+      background: white;
+      transform: scale(1.05);
+      color: var(--gold);
+    }
+    .modal-media img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+    .modal-body {
+      padding: 2rem 2rem 2.2rem;
+    }
+    .modal-category {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+    .modal-body h2 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+      color: var(--charcoal);
+    }
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--taupe);
+      font-weight: 300;
+      margin: 0.8rem 0 1.2rem;
+      line-height: 1.6;
+    }
+    .modal-price {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--border-light);
+      padding-top: 1rem;
+    }
+
+    /* --- RESPONSIVE fine --- */
+    @media (max-width: 576px) {
+      .brand { font-size: 2.8rem; }
+      .tagline { font-size: 0.85rem; }
+      .sort-field { justify-content: flex-start; margin-top: 0.4rem; }
+      .chip { padding: 0.35rem 1rem; font-size: 0.75rem; }
+      .card-title { font-size: 1.3rem; }
+      .modal-body { padding: 1.5rem; }
+    }
+    @media (min-width: 768px) {
+      .sort-field { justify-content: flex-end; }
+    }
+
+    /* Force le style sur les chips générés dynamiquement */
+    .chip.is-active {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+      color: white !important;
+    }
+
+    /* Correction pour le texte des chips */
+    .chip {
+      font-family: var(--font-sans) !important;
+    }
+
+    /* ===== FIN STYLE FRANÇAIS ===== */
+  </style>
 </head>
 <body>
 
@@ -29,35 +440,45 @@
 
 <!-- ============ TOOLBAR ============ -->
 <div class="toolbar-wrap">
-  <div class="toolbar">
-    <div class="search-field">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-search">
-        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
-        <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      </svg>
-      <input type="text" id="searchInput" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit">
-    </div>
+  <div class="toolbar container-fluid">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 col-md-4">
+        <div class="search-field position-relative">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-search">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit">
+        </div>
+      </div>
 
-    <div class="chips" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
-      <button class="chip is-active" data-category="Tous">Tous</button>
-    </div>
+      <div class="col-12 col-md-5">
+        <div class="chips d-flex flex-wrap gap-2" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
+          <button class="chip is-active" data-category="Tous">Tous</button>
+        </div>
+      </div>
 
-    <div class="sort-field">
-      <label for="sortSelect">Trier</label>
-      <select id="sortSelect">
-        <option value="default">Par défaut</option>
-        <option value="price-asc">Prix croissant</option>
-        <option value="price-desc">Prix décroissant</option>
-        <option value="name-asc">Nom A–Z</option>
-      </select>
+      <div class="col-12 col-md-3">
+        <div class="sort-field">
+          <label for="sortSelect">Trier</label>
+          <select id="sortSelect" class="form-select">
+            <option value="default">Par défaut</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name-asc">Nom A–Z</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- ============ CATALOGUE GRID ============ -->
-<main class="catalogue-wrap">
+<main class="catalogue-wrap container-fluid">
   <p class="result-count" id="resultCount"></p>
-  <div class="grid" id="productGrid"></div>
+
+  <div class="row g-4" id="productGrid"></div>
+
   <p class="empty-state" id="emptyState" hidden>Aucune gourmandise ne correspond à votre recherche.</p>
 </main>
 
@@ -84,6 +505,176 @@
   </div>
 </div>
 
-<script src="js/script.js"></script>
+<!-- Bootstrap 5.3.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ============ SCRIPT ============ -->
+<script>
+  // ============================================================
+  // DONNÉES PRODUITS (exemple)
+  // ============================================================
+
+
+  // ============================================================
+  // ÉTAT
+  // ============================================================
+  let currentCategory = "Tous";
+  let currentSearch = "";
+  let currentSort = "default";
+  let filteredProducts = [...products];
+  let activeChip = null;
+
+  // ============================================================
+  // DOM REFS
+  // ============================================================
+  const grid = document.getElementById("productGrid");
+  const searchInput = document.getElementById("searchInput");
+  const sortSelect = document.getElementById("sortSelect");
+  const chipsContainer = document.getElementById("categoryChips");
+  const resultCount = document.getElementById("resultCount");
+  const emptyState = document.getElementById("emptyState");
+
+  // Modal refs
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  const modalMedia = document.getElementById("modalMedia");
+  const modalCategory = document.getElementById("modalCategory");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalPrice = document.getElementById("modalPrice");
+
+  // ============================================================
+  // FONCTIONS
+  // ============================================================
+  function getCategories() {
+    const cats = products.map(p => p.category);
+    return ["Tous", ...new Set(cats)];
+  }
+
+  function renderChips() {
+    const categories = getCategories();
+    chipsContainer.innerHTML = "";
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "chip" + (cat === currentCategory ? " is-active" : "");
+      btn.dataset.category = cat;
+      btn.textContent = cat;
+      chipsContainer.appendChild(btn);
+    });
+    activeChip = chipsContainer.querySelector(".is-active");
+  }
+
+  function filterAndSort() {
+    let result = products.filter(p => {
+      const matchCategory = currentCategory === "Tous" || p.category === currentCategory;
+      const searchLower = currentSearch.trim().toLowerCase();
+      const matchSearch = p.name.toLowerCase().includes(searchLower) ||
+                          p.description.toLowerCase().includes(searchLower) ||
+                          p.category.toLowerCase().includes(searchLower);
+      return matchCategory && matchSearch;
+    });
+
+    // Trier
+    if (currentSort === "price-asc") result.sort((a, b) => a.price - b.price);
+    else if (currentSort === "price-desc") result.sort((a, b) => b.price - a.price);
+    else if (currentSort === "name-asc") result.sort((a, b) => a.name.localeCompare(b.name));
+    // default : garde l'ordre initial (id)
+
+    filteredProducts = result;
+    renderGrid();
+  }
+
+  function renderGrid() {
+    if (filteredProducts.length === 0) {
+      grid.innerHTML = "";
+      emptyState.hidden = false;
+      resultCount.textContent = "0 produits";
+      return;
+    }
+    emptyState.hidden = true;
+    resultCount.textContent = `${filteredProducts.length} produit${filteredProducts.length > 1 ? 's' : ''}`;
+
+    grid.innerHTML = filteredProducts.map(p => `
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card h-100" data-id="${p.id}">
+          <img src="${p.image}" class="card-img-top object-fit-cover" style="height:240px" alt="${p.name}" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h3 class="card-title">${p.name}</h3>
+            <p class="card-text flex-grow-1">${p.description}</p>
+            <p class="fw-bold mb-0">${p.price} MAD</p>
+          </div>
+        </div>
+      </div>
+    `).join("");
+
+    // Attacher l'événement "click" sur chaque carte pour ouvrir le modal
+    document.querySelectorAll("#productGrid .card").forEach(card => {
+      card.addEventListener("click", function(e) {
+        const id = parseInt(this.dataset.id);
+        const product = products.find(p => p.id === id);
+        if (product) openModal(product);
+      });
+    });
+  }
+
+  // --- MODAL ---
+  function openModal(product) {
+    modalMedia.innerHTML = `<img src="${product.image}" alt="${product.name}">`;
+    modalCategory.textContent = product.category;
+    modalTitle.textContent = product.name;
+    modalDesc.textContent = product.description;
+    modalPrice.textContent = `${product.price} MAD`;
+    modalOverlay.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modalOverlay.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  // ============================================================
+  // ÉVÉNEMENTS
+  // ============================================================
+
+  // Délégation d'événements pour les chips (car ils sont recréés)
+  chipsContainer.addEventListener("click", function(e) {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    // Retirer la classe active de tous les chips
+    document.querySelectorAll(".chip").forEach(c => c.classList.remove("is-active"));
+    chip.classList.add("is-active");
+    currentCategory = chip.dataset.category;
+    filterAndSort();
+  });
+
+  searchInput.addEventListener("input", function() {
+    currentSearch = this.value;
+    filterAndSort();
+  });
+
+  sortSelect.addEventListener("change", function() {
+    currentSort = this.value;
+    filterAndSort();
+  });
+
+  modalClose.addEventListener("click", closeModal);
+  modalOverlay.addEventListener("click", function(e) {
+    if (e.target === modalOverlay) closeModal();
+  });
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeModal();
+  });
+
+  // ============================================================
+  // INIT
+  // ============================================================
+  renderChips();
+  filterAndSort();
+
+  // Petit correctif pour que les chips dynamiques aient bien le style
+  // (déjà géré via les classes CSS)
+</script>
+
 </body>
 </html>
