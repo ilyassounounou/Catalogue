@@ -8,140 +8,43 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          cream:   '#FBF6EA',
-          ink:     '#2B241D',
-          gold:    '#C0973A',
-          goldDeep:'#8C6A22',
-          choc:    '#3F2A20',
-          burgundy:'#6E2A38',
-        },
-        fontFamily: {
-          display: ['"Cormorant Garamond"', 'serif'],
-          body: ['Jost', 'sans-serif'],
-        },
-      }
-    }
-  }
-</script>
-
-<style>
-  body { background-color: #FBF6EA; }
-
-  /* fine paper texture, very subtle */
-  .grain::before{
-    content:"";
-    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.035;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-
-  .swirl-divider path{ stroke: #C0973A; }
-
-  /* ---- Product card: pâtisserie box, folded gold corner ---- */
-  .card{
-    position:relative;
-    background:#FFFDF8;
-    border:1px solid rgba(140,106,34,.18);
-    transition: transform .35s cubic-bezier(.2,.7,.3,1), box-shadow .35s ease, border-color .35s ease;
-  }
-  .card:hover{
-    transform: translateY(-6px);
-    box-shadow: 0 18px 34px -18px rgba(63,42,32,.35), 0 4px 10px -4px rgba(63,42,32,.12);
-    border-color: rgba(192,151,58,.55);
-  }
-  .card-fold{
-    position:absolute; top:0; right:0; width:0; height:0;
-    border-style:solid; border-width:0 34px 34px 0;
-    border-color: transparent #C0973A transparent transparent;
-    transition: border-width .35s ease, filter .35s ease;
-    filter: drop-shadow(-2px 2px 3px rgba(63,42,32,.18));
-  }
-  .card:hover .card-fold{ border-width:0 42px 42px 0; }
-  .card-fold::after{
-    content:"";
-    position:absolute; top: 4px; right:-34px; width:10px; height:10px;
-  }
-
-  .card-img-wrap{ overflow:hidden; background:#F1E9D6; }
-  .card-img-wrap img{ transition: transform .6s cubic-bezier(.2,.7,.3,1); }
-  .card:hover .card-img-wrap img{ transform: scale(1.07); }
-
-  .price-tag{
-    font-family:'Jost',sans-serif; letter-spacing:.02em;
-  }
-
-  .chip{
-    font-family:'Jost',sans-serif;
-    border:1px solid rgba(63,42,32,.22);
-    color:#3F2A20;
-    transition: all .25s ease;
-  }
-  .chip:hover{ border-color:#C0973A; color:#8C6A22; }
-  .chip.is-active{
-    background:#3F2A20; border-color:#3F2A20; color:#FBF6EA;
-  }
-
-  .underline-grow{
-    position:relative; display:inline-block;
-  }
-  .underline-grow::after{
-    content:""; position:absolute; left:0; bottom:-4px; height:1px; width:0%;
-    background:#C0973A; transition: width .4s ease;
-  }
-  .card:hover .underline-grow::after{ width:100%; }
-
-  ::selection{ background:#C0973A; color:#FBF6EA; }
-
-  .modal-media img{ width:100%; height:100%; object-fit:cover; }
-
-  @media (prefers-reduced-motion: reduce){
-    .card, .card-fold, .card-img-wrap img, .underline-grow::after{ transition:none !important; }
-  }
-</style>
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body class="grain relative text-ink font-body">
+<body>
 
 <!-- ============ HEADER ============ -->
-<header class="relative z-10 border-b border-gold/20">
-  <div class="max-w-5xl mx-auto px-6 pt-14 pb-10 text-center">
-    <p class="font-body text-[11px] tracking-[0.25em] uppercase text-goldDeep mb-3">Pâtisserie artisanale · Casablanca</p>
-    <h1 class="font-display text-5xl sm:text-6xl font-semibold text-choc">L'Ami Doré</h1>
-    <p class="font-display italic text-lg sm:text-xl text-ink/70 mt-3">Chaque douceur porte l'empreinte d'un geste patient</p>
-    <svg class="swirl-divider mx-auto mt-6 w-40" viewBox="0 0 240 24" aria-hidden="true">
+<header class="site-header">
+  <div class="header-inner">
+    <p class="eyebrow">Pâtisserie artisanale · Casablanca</p>
+    <h1 class="brand">L'Ami Doré</h1>
+    <p class="tagline">Chaque douceur porte l'empreinte d'un geste patient</p>
+    <svg class="swirl-divider" viewBox="0 0 240 24" aria-hidden="true">
       <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
-            fill="none" stroke-width="2" stroke-linecap="round"/>
+            fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </div>
 </header>
 
 <!-- ============ TOOLBAR ============ -->
-<div class="sticky top-0 z-20 bg-cream/90 backdrop-blur border-b border-gold/15">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
-
-    <div class="relative w-full md:max-w-xs">
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-choc/50">
+<div class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="search-field">
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-search">
         <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
         <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
       </svg>
-      <input type="text" id="searchInput" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit"
-        class="w-full font-body text-sm pl-9 pr-3 py-2.5 rounded-full border border-choc/20 bg-white/70 focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold placeholder:text-choc/40">
+      <input type="text" id="searchInput" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit">
     </div>
 
-    <div class="flex flex-wrap gap-2 justify-center" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
-      <button class="chip is-active px-4 py-1.5 rounded-full text-sm" data-category="Tous">Tous</button>
+    <div class="chips" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
+      <button class="chip is-active" data-category="Tous">Tous</button>
     </div>
 
-    <div class="flex items-center gap-2 justify-center md:justify-end">
-      <label for="sortSelect" class="text-sm text-choc/60 font-body">Trier</label>
-      <select id="sortSelect"
-        class="text-sm font-body rounded-full border border-choc/20 bg-white/70 pl-3 pr-8 py-2 focus:outline-none focus:ring-2 focus:ring-gold/50">
+    <div class="sort-field">
+      <label for="sortSelect">Trier</label>
+      <select id="sortSelect">
         <option value="default">Par défaut</option>
         <option value="price-asc">Prix croissant</option>
         <option value="price-desc">Prix décroissant</option>
@@ -152,150 +55,35 @@
 </div>
 
 <!-- ============ CATALOGUE GRID ============ -->
-<main class="relative z-10 max-w-6xl mx-auto px-6 py-10">
-  <p class="text-sm text-choc/50 mb-6 font-body" id="resultCount"></p>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="productGrid"></div>
-  <p class="empty-state hidden text-center text-choc/50 font-display italic text-lg py-16" id="emptyState">Aucune gourmandise ne correspond à votre recherche.</p>
+<main class="catalogue-wrap">
+  <p class="result-count" id="resultCount"></p>
+  <div class="grid" id="productGrid"></div>
+  <p class="empty-state" id="emptyState" hidden>Aucune gourmandise ne correspond à votre recherche.</p>
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="relative z-10 border-t border-gold/20 py-10 text-center">
-  <svg class="swirl-divider small mx-auto w-32" viewBox="0 0 240 24" aria-hidden="true">
+<footer class="site-footer">
+  <svg class="swirl-divider small" viewBox="0 0 240 24" aria-hidden="true">
     <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
-          fill="none" stroke-width="1.6" stroke-linecap="round"/>
+          fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/>
   </svg>
-  <p class="mt-4 text-xs tracking-[0.2em] uppercase text-choc/50">L'Ami Doré — Catalogue en ligne · Prix en MAD</p>
+  <p>L'Ami Doré — Catalogue en ligne · Prix en MAD</p>
 </footer>
 
 <!-- ============ PRODUCT MODAL ============ -->
-<div class="modal-overlay hidden fixed inset-0 z-50 bg-choc/60 backdrop-blur-sm items-center justify-center p-4" id="modalOverlay">
-  <div class="modal relative bg-cream rounded-2xl overflow-hidden max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-close absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 text-choc text-2xl leading-none flex items-center justify-center hover:bg-white" id="modalClose" aria-label="Fermer">&times;</button>
-    <div class="modal-media aspect-[4/3] bg-[#F1E9D6]" id="modalMedia"></div>
-    <div class="modal-body p-6 sm:p-8">
-      <p class="modal-category text-xs tracking-[0.2em] uppercase text-goldDeep mb-2" id="modalCategory"></p>
-      <h2 class="font-display text-3xl font-semibold text-choc" id="modalTitle"></h2>
-      <p class="modal-desc text-ink/70 mt-3 leading-relaxed" id="modalDesc"></p>
-      <p class="modal-price price-tag text-xl text-burgundy mt-5 font-medium" id="modalPrice"></p>
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-body">
+      <p class="modal-category" id="modalCategory"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-price" id="modalPrice"></p>
     </div>
   </div>
 </div>
 
-<script>
-/* ============================================================
-   Sample product data — replace this array (or wire it up to
-   your admin panel / GitHub Contents API JSON) with real data.
-   Each product needs: id, name, category, price, desc, img
-   ============================================================ */
-const PRODUCTS = [
-  { id: 1, name: "Croissant Pur Beurre", category: "Viennoiseries", price: 8, desc: "Feuilletage doré, 27 tours de beurre AOP, cœur alvéolé et moelleux.", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=800" },
-  { id: 2, name: "Pain au Chocolat", category: "Viennoiseries", price: 9, desc: "Deux bâtons de chocolat noir enveloppés d'une pâte feuilletée croustillante.", img: "https://images.unsplash.com/photo-1623334044303-241021148842?q=80&w=800" },
-  { id: 3, name: "Tarte au Citron Meringuée", category: "Tartes", price: 35, desc: "Crème citron acidulée sur pâte sablée, meringue légèrement flambée.", img: "https://images.unsplash.com/photo-1519915028121-7d3463d20b13?q=80&w=800" },
-  { id: 4, name: "Macarons Assortis (x6)", category: "Macarons", price: 60, desc: "Coques croustillantes, ganaches fondantes — pistache, framboise, vanille.", img: "https://images.unsplash.com/photo-1569864358642-9d1684040f43?q=80&w=800" },
-  { id: 5, name: "Éclair au Café", category: "Pâtisseries", price: 22, desc: "Pâte à choux légère, crème pâtissière au café, glaçage fondant.", img: "https://images.unsplash.com/photo-1612203985729-70726954388c?q=80&w=800" },
-  { id: 6, name: "Gâteau Opéra", category: "Gâteaux", price: 180, desc: "Biscuit joconde, ganache chocolat, crème au beurre café — pièce entière.", img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800" },
-  { id: 7, name: "Pain de Campagne", category: "Pains", price: 18, desc: "Levain naturel, croûte craquante, mie alvéolée — cuisson longue au four à sole.", img: "https://images.unsplash.com/photo-1585478259715-4d3a5a35e8f1?q=80&w=800" },
-  { id: 8, name: "Financier Amande", category: "Pâtisseries", price: 12, desc: "Beurre noisette, poudre d'amande, moelleux en bouche et doré en surface.", img: "https://images.unsplash.com/photo-1587241321921-91a834d6d191?q=80&w=800" },
-];
-
-const grid = document.getElementById('productGrid');
-const chipsWrap = document.getElementById('categoryChips');
-const searchInput = document.getElementById('searchInput');
-const sortSelect = document.getElementById('sortSelect');
-const resultCount = document.getElementById('resultCount');
-const emptyState = document.getElementById('emptyState');
-
-let activeCategory = 'Tous';
-
-// Build category chips dynamically
-const categories = ['Tous', ...new Set(PRODUCTS.map(p => p.category))];
-chipsWrap.innerHTML = categories.map(cat =>
-  `<button class="chip ${cat === 'Tous' ? 'is-active' : ''} px-4 py-1.5 rounded-full text-sm" data-category="${cat}">${cat}</button>`
-).join('');
-
-chipsWrap.addEventListener('click', e => {
-  const btn = e.target.closest('.chip');
-  if (!btn) return;
-  activeCategory = btn.dataset.category;
-  [...chipsWrap.children].forEach(c => c.classList.toggle('is-active', c === btn));
-  render();
-});
-
-searchInput.addEventListener('input', render);
-sortSelect.addEventListener('change', render);
-
-function money(n){ return n.toLocaleString('fr-FR') + ' MAD'; }
-
-function render(){
-  const q = searchInput.value.trim().toLowerCase();
-  let list = PRODUCTS.filter(p =>
-    (activeCategory === 'Tous' || p.category === activeCategory) &&
-    (p.name.toLowerCase().includes(q) || p.category.toLowerCase().includes(q))
-  );
-
-  switch (sortSelect.value){
-    case 'price-asc':  list.sort((a,b) => a.price - b.price); break;
-    case 'price-desc': list.sort((a,b) => b.price - a.price); break;
-    case 'name-asc':   list.sort((a,b) => a.name.localeCompare(b.name, 'fr')); break;
-  }
-
-  resultCount.textContent = `${list.length} gourmandise${list.length !== 1 ? 's' : ''}`;
-  emptyState.classList.toggle('hidden', list.length !== 0);
-  grid.innerHTML = list.map(cardHTML).join('');
-}
-
-function cardHTML(p){
-  return `
-    <article class="card rounded-xl overflow-hidden cursor-pointer group" data-id="${p.id}">
-      <span class="card-fold" aria-hidden="true"></span>
-      <div class="card-img-wrap aspect-[4/3]">
-        <img src="${p.img}" alt="${p.name}" loading="lazy" class="w-full h-full object-cover">
-      </div>
-      <div class="p-4">
-        <p class="text-[10px] tracking-[0.18em] uppercase text-goldDeep mb-1">${p.category}</p>
-        <h3 class="font-display text-xl font-semibold text-choc underline-grow">${p.name}</h3>
-        <p class="price-tag text-burgundy text-base mt-2">${money(p.price)}</p>
-      </div>
-    </article>
-  `;
-}
-
-grid.addEventListener('click', e => {
-  const card = e.target.closest('.card');
-  if (!card) return;
-  const product = PRODUCTS.find(p => p.id === Number(card.dataset.id));
-  if (product) openModal(product);
-});
-
-// ---- Modal ----
-const modalOverlay = document.getElementById('modalOverlay');
-const modalMedia = document.getElementById('modalMedia');
-const modalCategory = document.getElementById('modalCategory');
-const modalTitle = document.getElementById('modalTitle');
-const modalDesc = document.getElementById('modalDesc');
-const modalPrice = document.getElementById('modalPrice');
-const modalClose = document.getElementById('modalClose');
-
-function openModal(p){
-  modalMedia.innerHTML = `<img src="${p.img}" alt="${p.name}">`;
-  modalCategory.textContent = p.category;
-  modalTitle.textContent = p.name;
-  modalDesc.textContent = p.desc;
-  modalPrice.textContent = money(p.price);
-  modalOverlay.classList.remove('hidden');
-  modalOverlay.classList.add('flex');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal(){
-  modalOverlay.classList.add('hidden');
-  modalOverlay.classList.remove('flex');
-  document.body.style.overflow = '';
-}
-modalClose.addEventListener('click', closeModal);
-modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-render();
-</script>
+<script src="js/script.js"></script>
 </body>
 </html>
