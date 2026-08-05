@@ -26,6 +26,9 @@ const els = {
   modalPrice: document.getElementById("modalPrice"),
 };
 
+/* Hauteur fixe des images/vignettes, identique pour toutes les cartes */
+const CARD_IMAGE_HEIGHT = 240; // px — change cette valeur si besoin
+
 /* ---------- small swirl icon reused on every card ---------- */
 const SWIRL_SVG = `
 <svg class="card-swirl" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -113,26 +116,48 @@ function render() {
   });
 }
 
+/* Média utilisé DANS la carte (vignette de taille fixe) */
 function mediaContent(product) {
   if (product.image && product.image.trim() !== "") {
-    return `<img src="${product.image}" alt="${product.name}" loading="lazy">`;
+    return `<img src="${product.image}" alt="${product.name}" loading="lazy" class="w-100 h-100 object-fit-cover">`;
   }
-  return `<span class="monogram">${product.name.charAt(0)}</span>${SWIRL_SVG}`;
+  return `
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center position-relative bg-secondary-subtle">
+      <span class="monogram display-4">${product.name.charAt(0)}</span>${SWIRL_SVG}
+    </div>`;
 }
 
+/* Média utilisé dans la MODALE (peut être plus grand, pas de contrainte de hauteur) */
+function modalMediaContent(product) {
+  if (product.image && product.image.trim() !== "") {
+    return `<img src="${product.image}" alt="${product.name}" class="w-100 h-100 object-fit-cover">`;
+  }
+  return `
+    <div class="w-100 h-100 d-flex align-items-center justify-content-center position-relative bg-secondary-subtle">
+      <span class="monogram display-1">${product.name.charAt(0)}</span>${SWIRL_SVG}
+    </div>`;
+}
+
+/* Carte Bootstrap : col-12 (mobile) / col-sm-6 (tablette) / col-lg-4 (desktop)
+   => 3 cartes par ligne sur grand écran, responsive.
+   h-100 sur .card => toutes les cartes d'une même ligne ont la même hauteur. */
 function cardTemplate(product) {
   return `
-    <article class="card" data-id="${product.id}" data-category="${product.category}" tabindex="0">
-      <div class="card-media">${mediaContent(product)}</div>
-      <div class="card-body">
-        <span class="card-cat">${product.category}</span>
-        <h3 class="card-name">${product.name}</h3>
-        <p class="card-desc">${product.description}</p>
-        <div class="card-footer">
-          <span class="card-price">${product.price} <sup>MAD</sup></span>
+    <div class="col-12 col-sm-6 col-lg-4">
+      <article class="card h-100" data-id="${product.id}" data-category="${product.category}" tabindex="0">
+        <div class="overflow-hidden" style="height:${CARD_IMAGE_HEIGHT}px;">
+          ${mediaContent(product)}
         </div>
-      </div>
-    </article>
+        <div class="card-body d-flex flex-column">
+          <span class="card-cat badge text-bg-secondary align-self-start mb-2">${product.category}</span>
+          <h3 class="card-name h5">${product.name}</h3>
+          <p class="card-desc flex-grow-1">${product.description}</p>
+          <div class="card-footer bg-transparent border-0 px-0 pb-0 d-flex justify-content-between align-items-center">
+            <span class="card-price fw-bold">${product.price} <sup>MAD</sup></span>
+          </div>
+        </div>
+      </article>
+    </div>
   `;
 }
 
@@ -142,7 +167,7 @@ function openModal(id) {
   if (!product) return;
 
   document.querySelector(".modal").dataset.category = product.category;
-  els.modalMedia.innerHTML = mediaContent(product);
+  els.modalMedia.innerHTML = modalMediaContent(product);
   els.modalCategory.textContent = product.category;
   els.modalTitle.textContent = product.name;
   els.modalDesc.textContent = product.description;
