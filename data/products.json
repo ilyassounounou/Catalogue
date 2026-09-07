@@ -1,0 +1,402 @@
+[
+  {
+    "id": "p01",
+    "name": "mille-feuille",
+    "category": "cake",
+    "price": 12,
+    "description": "Mille-feuille croustillant à la crème pâtissière",
+    "image": "images/5913466150757451774-121-1785178892397.jpg"
+  },
+  {
+    "id": "p02",
+    "name": "coockies",
+    "category": "patisserie",
+    "price": 8,
+    "description": "Cookies gourmands aux pépites de chocolat",
+    "image": "images/5913466150757451755-121-1785180345139.jpg"
+  },
+  {
+    "id": "p03",
+    "name": "p.pain chocolat",
+    "category": "vinnoiserie",
+    "price": 3,
+    "description": "Pain au chocolat feuilleté",
+    "image": "images/5913466150757451806-121-1785180753661.jpg"
+  },
+  {
+    "id": "p04",
+    "name": "dounat",
+    "category": "sale",
+    "price": 10,
+    "description": "Donut moelleux au sucre",
+    "image": "images/573697456-17849812251585470-2058103834366467600-n-1785268982965.webp"
+  },
+  {
+    "id": "p05",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 17,
+    "description": "Tranche de gâteau gourmand",
+    "image": "images/565578096-17847374775585470-4166763591642800622-n-1785431704353.webp"
+  },
+  {
+    "id": "p06",
+    "name": "besbousa",
+    "category": "cake",
+    "price": 7,
+    "description": "Besbousa moelleuse à la semoule",
+    "image": "images/567405708-17847650871585470-7480954707356952941-n-1785431772000.webp"
+  },
+  {
+    "id": "p07",
+    "name": "burger",
+    "category": "sale",
+    "price": 15,
+    "description": "Burger maison avec pain brioché",
+    "image": "images/569863910-17848485201585470-3463515454404754082-n-1785952493195.webp"
+  },
+  {
+    "id": "p08",
+    "name": "plateaux soire",
+    "category": "soire",
+    "price": 150,
+    "description": "",
+    "image": "images/569425138-17848264545585470-4596347794263544024-n-1788733040179.webp"
+  },
+  {
+    "id": "p09",
+    "name": "pizza",
+    "category": "sale",
+    "price": 10,
+    "description": "",
+    "image": "images/570208290-17848485750585470-4366609806921981889-n-1788738097151.webp"
+  },
+  {
+    "id": "p10",
+    "name": "new yourk",
+    "category": "sale",
+    "price": 15,
+    "description": "",
+    "image": "images/569358354-17848265916585470-6155977181468066115-n-1788738859596.webp"
+  },
+  {
+    "id": "p11",
+    "name": "cake designe",
+    "category": "cake",
+    "price": 60,
+    "description": "",
+    "image": "images/572871705-17849029944585470-6901128307250825298-n-1788744595380.webp"
+  },
+  {
+    "id": "p12",
+    "name": "tacos",
+    "category": "sale",
+    "price": 15,
+    "description": "",
+    "image": "images/569606243-17848484781585470-5057814091199011670-n-1788746133168.webp"
+  },
+  {
+    "id": "p13",
+    "name": "Brawnise",
+    "category": "cake",
+    "price": 15,
+    "description": "",
+    "image": "images/569119474-17847650982585470-3989663738088994699-n-1788746184727.webp"
+  },
+  {
+    "id": "p14",
+    "name": "cake Deaigne",
+    "category": "patisserie",
+    "price": 60,
+    "description": "",
+    "image": "images/573132371-17849029656585470-8872190546091357137-n-1788746229806.webp"
+  },
+  {
+    "id": "p15",
+    "name": "Jalouzi",
+    "category": "viltage",
+    "price": 10,
+    "description": "",
+    "image": "images/581255413-17851745532585470-7213161917668554840-n-1788746281422.webp"
+  },
+  {
+    "id": "p16",
+    "name": "Brounies",
+    "category": "cake",
+    "price": 15,
+    "description": "",
+    "image": "images/567629127-17847651453585470-6416302829565694025-n-1788746310630.webp"
+  },
+  {
+    "id": "p17",
+    "name": "Bestila poison",
+    "category": "sale",
+    "price": 100,
+    "description": "",
+    "image": "images/569731436-17848255914585470-8881370704411305125-n-1788747895307.webp"
+  },
+  {
+    "id": "p18",
+    "name": "jalouzi",
+    "category": "sale",
+    "price": 15,
+    "description": "",
+    "image": "images/570212981-17848484496585470-7795824558005800987-n-1788747961409.webp"
+  },
+  {
+    "id": "p19",
+    "name": "Plateau sale Petit",
+    "category": "sale",
+    "price": 100,
+    "description": "",
+    "image": "images/569083395-17848255479585470-7288478468247541197-n-1788748036945.webp"
+  },
+  {
+    "id": "p20",
+    "name": "plateau sable grand",
+    "category": "sable",
+    "price": 130,
+    "description": "",
+    "image": "images/568536268-17847589413585470-3890074969665605752-n-1788748078777.webp"
+  },
+  {
+    "id": "p21",
+    "name": "Gateau glacer",
+    "category": "patisserie",
+    "price": 150,
+    "description": "",
+    "image": "images/569919803-17848267026585470-7006281134064134932-n-1788748143241.webp"
+  },
+  {
+    "id": "p22",
+    "name": "cookies",
+    "category": "cake",
+    "price": 8,
+    "description": "",
+    "image": "images/572106181-17850497004585470-4964829133201632490-n-1788748178745.webp"
+  },
+  {
+    "id": "p23",
+    "name": "chouson",
+    "category": "sale",
+    "price": 12,
+    "description": "",
+    "image": "images/570628048-17848484631585470-7443467042762502102-n-1788748228081.webp"
+  },
+  {
+    "id": "p24",
+    "name": "pain demis",
+    "category": "sale",
+    "price": 15,
+    "description": "",
+    "image": "images/569960265-17848484556585470-12216921443290044-n-1788748263024.webp"
+  },
+  {
+    "id": "p25",
+    "name": "plateaux soire petit",
+    "category": "soire",
+    "price": 100,
+    "description": "",
+    "image": "images/580487802-17851382253585470-4999349025314000388-n-1788748302544.webp"
+  },
+  {
+    "id": "p26",
+    "name": "magnom",
+    "category": "patisserie",
+    "price": 12,
+    "description": "",
+    "image": "images/572161420-17849813247585470-6717813719806867693-n-1788748328249.webp"
+  },
+  {
+    "id": "p27",
+    "name": "cake designe",
+    "category": "patisserie",
+    "price": 60,
+    "description": "",
+    "image": "images/571905819-17849030223585470-4269471856548558867-n-1788748372904.webp"
+  },
+  {
+    "id": "p28",
+    "name": "plateau macaron petit",
+    "category": "patisserie",
+    "price": 100,
+    "description": "",
+    "image": "images/572537092-17850159969585470-8028686753287385654-n-1788748406920.webp"
+  },
+  {
+    "id": "p29",
+    "name": "plateau sale grand",
+    "category": "sale",
+    "price": 200,
+    "description": "",
+    "image": "images/573794369-17850496770585470-1610748012918647792-n-1788748436560.webp"
+  },
+  {
+    "id": "p30",
+    "name": "cookies",
+    "category": "cake",
+    "price": 8,
+    "description": "",
+    "image": "images/5913466150757451760-121-1788748487688.jpg"
+  },
+  {
+    "id": "p31",
+    "name": "mille feuille",
+    "category": "cake",
+    "price": 10,
+    "description": "",
+    "image": "images/5913466150757451762-121-1788748514544.jpg"
+  },
+  {
+    "id": "p32",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451772-121-1788748536432.jpg"
+  },
+  {
+    "id": "p33",
+    "name": "cookies",
+    "category": "cake",
+    "price": 8,
+    "description": "",
+    "image": "images/5913466150757451764-121-1788748566984.jpg"
+  },
+  {
+    "id": "p34",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451777-121-1788748586935.jpg"
+  },
+  {
+    "id": "p35",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451778-121-1788748603599.jpg"
+  },
+  {
+    "id": "p36",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451766-121-1788748628431.jpg"
+  },
+  {
+    "id": "p37",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451768-121-1788748649151.jpg"
+  },
+  {
+    "id": "p38",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451820-121-1788748674023.jpg"
+  },
+  {
+    "id": "p39",
+    "name": "cheese cake",
+    "category": "patisserie",
+    "price": 20,
+    "description": "",
+    "image": "images/5913466150757451781-121-1788748691319.jpg"
+  },
+  {
+    "id": "p40",
+    "name": "tarte framboise",
+    "category": "patisserie",
+    "price": 20,
+    "description": "",
+    "image": "images/5913466150757451770-121-1788748725559.jpg"
+  },
+  {
+    "id": "p41",
+    "name": "fondant chocolat",
+    "category": "cake",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451761-121-1788748759999.jpg"
+  },
+  {
+    "id": "p42",
+    "name": "madlene chocolat",
+    "category": "cake",
+    "price": 3,
+    "description": "",
+    "image": "images/5913466150757451775-121-1788748781191.jpg"
+  },
+  {
+    "id": "p43",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/5913466150757451792-121-1788748802806.jpg"
+  },
+  {
+    "id": "p44",
+    "name": "cake roussi",
+    "category": "cake",
+    "price": 13,
+    "description": "",
+    "image": "images/5913466150757451769-121-1788748832975.jpg"
+  },
+  {
+    "id": "p45",
+    "name": "red velvete",
+    "category": "patisserie",
+    "price": 20,
+    "description": "",
+    "image": "images/5913466150757451789-121-1788748865967.jpg"
+  },
+  {
+    "id": "p46",
+    "name": "tranche",
+    "category": "patisserie",
+    "price": 15,
+    "description": "",
+    "image": "images/default-1788748897430.jpg"
+  },
+  {
+    "id": "p47",
+    "name": "bestila poulet petit",
+    "category": "sale",
+    "price": 20,
+    "description": "",
+    "image": "images/5913466150757451816-121-1788748967944.jpg"
+  },
+  {
+    "id": "p48",
+    "name": "bestila poison petit",
+    "category": "sale",
+    "price": 25,
+    "description": "",
+    "image": "images/5913466150757451817-121-1788748997798.jpg"
+  },
+  {
+    "id": "p49",
+    "name": "plateau louz grand",
+    "category": "lbeldii",
+    "price": 250,
+    "description": "",
+    "image": "images/20260702-100532-1788749293612.jpg"
+  },
+  {
+    "id": "p50",
+    "name": "plateau sale petit",
+    "category": "sale",
+    "price": 100,
+    "description": "",
+    "image": "images/20260707-125611-1788749481723.jpg"
+  }
+]

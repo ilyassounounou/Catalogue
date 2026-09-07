@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Ami Doré — Catalogue</title>
+  <meta name="description" content="Catalogue de pâtisserie L'Ami Doré — viennoiseries, tartes, macarons, gâteaux et pains artisanaux." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3.3 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Votre CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ===== STYLE FRANÇAIS, ÉLÉGANT ET CHALEUREUX ===== */
+    body {
+      background-color: var(--cream);
+      font-family: var(--font-sans, var(--font-body));
+      color: var(--charcoal, var(--ink));
+    }
+
+    .site-header {
+      text-align: center;
+      padding: 2.8rem 1.5rem 1.8rem;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream) 100%);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .header-top-bar{
+      position:absolute;
+      top:16px;
+      right:16px;
+    }
+
+    .eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.4rem;
+      font-weight: 300;
+    }
+
+    .brand {
+      font-family: 'Parisienne', cursive;
+      font-size: 3.8rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      margin-top: 0.2rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      font-style: italic;
+    }
+
+    .swirl-divider {
+      display: block;
+      margin: 1.2rem auto 0;
+      width: 160px;
+      height: 24px;
+    }
+    .swirl-divider path {
+      stroke: var(--gold);
+      stroke-width: 1.8;
+    }
+
+    .toolbar-wrap {
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 1.2rem 0;
+    }
+
+    .search-field .icon-search {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      color: var(--ink-soft);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .search-field input {
+      background-color: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 60px;
+      padding: 0.6rem 1rem 0.6rem 2.8rem;
+      font-size: 0.9rem;
+      color: var(--ink);
+      transition: all 0.2s;
+      font-weight: 300;
+      box-shadow: var(--shadow-card);
+    }
+    .search-field input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(183, 140, 90, 0.15);
+      outline: none;
+    }
+    .search-field input::placeholder {
+      color: var(--ink-soft);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.6rem;
+    }
+
+    .chip {
+      border: 1px solid var(--line);
+      border-radius: 60px;
+      padding: 0.45rem 1.2rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink-soft);
+      transition: all 0.2s;
+      cursor: pointer;
+      background: var(--cream);
+      font-family: var(--font-body) !important;
+    }
+    .chip:hover {
+      border-color: var(--gold);
+      color: var(--ink);
+    }
+    .chip.is-active {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+      color: #2B1B14 !important;
+      font-weight: 500;
+      box-shadow: 0 4px 10px rgba(183, 140, 90, 0.2);
+    }
+
+    .sort-field {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0.8rem;
+    }
+    .sort-field label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin: 0;
+    }
+    .sort-field select {
+      border: 1px solid var(--line);
+      border-radius: 60px;
+      padding: 0.45rem 2rem 0.45rem 1.2rem;
+      font-size: 0.85rem;
+      background: var(--cream);
+      color: var(--ink);
+      font-weight: 300;
+      box-shadow: var(--shadow-card);
+      cursor: pointer;
+      transition: border 0.2s;
+    }
+    .sort-field select:focus {
+      border-color: var(--gold);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(183, 140, 90, 0.12);
+    }
+
+    .catalogue-wrap {
+      padding: 2.5rem 1.5rem 3rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .result-count {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      letter-spacing: 0.03em;
+      margin-bottom: 1.8rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--gold);
+    }
+
+    /* CARTES : élégance française, par-dessus les classes Bootstrap */
+    .card {
+      background: var(--cream-deep);
+      border: none;
+      border-radius: 20px;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.25s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      cursor: pointer;
+      height: 100%;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(44, 38, 32, 0.16);
+    }
+
+    .card-img-wrap{
+      position: relative;
+      overflow: hidden;
+      background-color: var(--cream-deep);
+      border-bottom: 1px solid var(--line);
+    }
+    .card-img-wrap::after{
+      content: "🔍 Voir en grand";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(43, 27, 20, 0.45);
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      opacity: 0;
+      transition: opacity .2s ease;
+      font-family: var(--font-body);
+    }
+    .card:hover .card-img-wrap::after{ opacity: 1; }
+
+    .card-img-top {
+      background-color: var(--cream-deep);
+    }
+
+    .card-body {
+      padding: 1.1rem 1.1rem 1.3rem;
+    }
+
+    .card-title {
+      font-family: 'Parisienne', cursive;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .card-text {
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin: 0.3rem 0 0.8rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .card .fw-bold {
+      font-weight: 500 !important;
+      color: var(--gold);
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--line);
+      padding-top: 0.8rem;
+      margin-top: 0.4rem;
+    }
+
+    .empty-state {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      padding: 4rem 1rem;
+      background: var(--cream-deep);
+      border-radius: 40px;
+      margin-top: 1rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ---------- Section "Nous trouver" (carte + infos) ---------- */
+    .find-us{
+      background: var(--cream-deep);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 3rem 1.5rem;
+    }
+    .find-us-inner{
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    @media (max-width: 768px){
+      .find-us-inner{ grid-template-columns: 1fr; }
+    }
+    .find-us h2{
+      font-family: 'Parisienne', cursive;
+      font-size: 2.2rem;
+      color: var(--ink);
+      margin: 0 0 0.6rem;
+    }
+    .find-us p{
+      color: var(--ink-soft);
+      font-weight: 300;
+      line-height: 1.6;
+      margin: 0 0 1.2rem;
+    }
+    .find-us-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0.7rem;
+    }
+    .btn-gold, .btn-outline-find{
+      display:inline-flex;
+      align-items:center;
+      gap:0.5rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn-gold{
+      background: var(--gold);
+      color: #2B1B14;
+      box-shadow: 0 6px 16px rgba(183,140,90,0.3);
+    }
+    .btn-gold:hover{ transform: translateY(-2px); color:#2B1B14; }
+    .btn-outline-find{
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: transparent;
+    }
+    .btn-outline-find:hover{ border-color: var(--gold); color: var(--ink); }
+    .map-embed{
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--line);
+    }
+    .map-embed iframe{ width:100%; height:100%; border:0; display:block; }
+
+    .site-footer {
+      text-align: center;
+      padding: 2.2rem 1.5rem 2.5rem;
+      border-top: 1px solid var(--line);
+      background: var(--cream);
+      color: var(--ink-soft);
+      font-weight: 300;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+    .site-footer .swirl-divider.small {
+      width: 120px;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== MODAL — vitrine décorative pâtisserie française ===== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 16, 13, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 1050;
+    }
+    .modal {
+      background: var(--cream);
+      max-width: 560px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      border-radius: 28px;
+      box-shadow: var(--shadow-modal);
+      position: relative;
+      border: 1px solid var(--gold);
+      animation: modalFade 0.25s ease;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; transform: scale(0.96) translateY(10px); }
+      to { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      font-size: 2rem;
+      line-height: 1;
+      width: 40px;
+      height: 40px;
+      border-radius: 60px;
+      color: #2B1B14;
+      cursor: pointer;
+      transition: 0.2s;
+      z-index: 10;
+      font-weight: 300;
+      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .modal-close:hover {
+      background: #fff;
+      transform: scale(1.05);
+      color: var(--gold-deep);
+    }
+
+    .modal-media {
+      background: var(--cream-deep);
+      padding: 1.8rem 1.8rem 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-media img {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;   /* image complète — jamais rognée */
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 10px 26px rgba(44, 38, 32, 0.10);
+    }
+
+    .modal-decor {
+      display: block;
+      width: 140px;
+      height: 18px;
+      margin: 0.6rem auto 0;
+    }
+    .modal-decor path {
+      stroke: var(--gold);
+      stroke-width: 1.6;
+      fill: none;
+    }
+
+    .modal-body {
+      padding: 1.4rem 2.2rem 2.4rem;
+      text-align: center;
+    }
+    .modal-category {
+      display: inline-block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #2B1B14;
+      background: var(--gold);
+      padding: 0.25rem 0.9rem;
+      border-radius: 60px;
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    .modal-body h2 {
+      font-family: 'Parisienne', cursive;
+      font-size: 2.1rem;
+      font-weight: 400;
+      margin: 0.2rem 0 0.3rem;
+      color: var(--ink);
+    }
+    .modal-desc {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      font-weight: 300;
+      margin: 0.6rem auto 1.2rem;
+      line-height: 1.65;
+      max-width: 420px;
+    }
+    .modal-price {
+      display: inline-block;
+      font-family: 'Parisienne', cursive;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--gold-deep);
+      letter-spacing: 0.03em;
+      border-top: 1px solid var(--line);
+      padding-top: 1rem;
+      margin-top: 0.4rem;
+    }
+    .modal-tag {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    @media (max-width: 576px) {
+      .brand { font-size: 2.8rem; }
+      .tagline { font-size: 0.85rem; }
+      .sort-field { justify-content: flex-start; margin-top: 0.4rem; }
+      .chip { padding: 0.35rem 1rem; font-size: 0.75rem; }
+      .card-title { font-size: 1.15rem; }
+      .card-body{ padding: 0.8rem 0.8rem 1rem; }
+      .modal-body { padding: 1.2rem 1.4rem 1.8rem; }
+      .modal-body h2 { font-size: 1.8rem; }
+      .header-top-bar{ top:10px; right:10px; }
+    }
+    @media (min-width: 768px) {
+      .sort-field { justify-content: flex-end; }
+    }
+    /* ===== FIN STYLE FRANÇAIS ===== */
+  </style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="header-top-bar">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Changer de thème">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.6A9 9 0 1 1 11.4 3a7 7 0 0 0 9.6 9.6Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.4M12 19.6V22M4.2 4.2l1.7 1.7M18.1 18.1l1.7 1.7M2 12h2.4M19.6 12H22M4.2 19.8l1.7-1.7M18.1 5.9l1.7-1.7"/></svg>
+    </button>
+  </div>
+  <div class="header-inner">
+    <p class="eyebrow">Pâtisserie artisanale · Casablanca</p>
+    <h1 class="brand">L'Ami Doré</h1>
+    <p class="tagline">Chaque douceur porte l'empreinte d'un geste patient</p>
+    <svg class="swirl-divider" viewBox="0 0 240 24" aria-hidden="true">
+      <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
+            fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div>
+</header>
+
+<!-- ============ TOOLBAR ============ -->
+<div class="toolbar-wrap">
+  <div class="toolbar container-fluid">
+    <div class="row g-3 align-items-center">
+      <div class="col-12 col-md-4">
+        <div class="search-field position-relative">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="icon-search">
+            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <line x1="16.2" y1="16.2" x2="21" y2="21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une gourmandise…" aria-label="Rechercher un produit">
+        </div>
+      </div>
+
+      <div class="col-12 col-md-5">
+        <div class="chips d-flex flex-wrap gap-2" id="categoryChips" role="group" aria-label="Filtrer par catégorie">
+          <button class="chip is-active" data-category="Tous">Tous</button>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-3">
+        <div class="sort-field">
+          <label for="sortSelect">Trier</label>
+          <select id="sortSelect" class="form-select">
+            <option value="default">Par défaut</option>
+            <option value="price-asc">Prix croissant</option>
+            <option value="price-desc">Prix décroissant</option>
+            <option value="name-asc">Nom A–Z</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CATALOGUE GRID ============ -->
+<main class="catalogue-wrap container-fluid">
+  <p class="result-count" id="resultCount"></p>
+
+  <!-- 2 cartes par ligne sur mobile (col-6), 3 sur tablette, 4 sur desktop -->
+  <div class="row g-3 g-md-4" id="productGrid"></div>
+
+  <p class="empty-state" id="emptyState" hidden>Aucune gourmandise ne correspond à votre recherche.</p>
+</main>
+
+<!-- ============ NOUS TROUVER (carte + whatsapp) ============ -->
+<section class="find-us" id="findUs">
+  <div class="find-us-inner">
+    <div>
+      <h2>Nous trouver</h2>
+      <p>
+        Passez nous voir à la pâtisserie ou contactez-nous directement pour
+        vos commandes de plateaux, gâteaux d'anniversaire et pièces sur-mesure.
+        <br><br>
+        <!-- TODO Lolo : remplace l'adresse ci-dessous par la vraie adresse de L'Ami Doré -->
+        📍 Adresse à confirmer — Casablanca, Maroc
+      </p>
+      <div class="find-us-actions">
+        <!-- TODO Lolo : remplace le lien Google Maps par celui de ta pâtisserie -->
+        <a class="btn-gold" href="https://www.google.com/maps/search/?api=1&query=Patisserie+L%27Ami+Dor%C3%A9+Casablanca" target="_blank" rel="noopener">
+          🗺️ Ouvrir dans Google Maps
+        </a>
+        <!-- TODO Lolo : remplace 212XXXXXXXXX par ton vrai numéro WhatsApp (indicatif pays + numéro, sans le +) -->
+        <a class="btn-outline-find" href="https://wa.me/212600000000?text=Bonjour%2C%20je%20souhaite%20passer%20une%20commande%20chez%20L%27Ami%20Dor%C3%A9" target="_blank" rel="noopener">
+          💬 Discuter sur WhatsApp
+        </a>
+      </div>
+    </div>
+    <div class="map-embed">
+      <!-- TODO Lolo : remplace le src ci-dessous par l'iframe "Intégrer une carte" de Google Maps pour ton adresse exacte -->
+      <iframe
+        src="https://www.google.com/maps?q=Casablanca%2C%20Maroc&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <svg class="swirl-divider small" viewBox="0 0 240 24" aria-hidden="true">
+    <path d="M2 12 C 30 -4, 50 28, 78 12 S 126 -4, 150 12 S 198 28, 222 12"
+          fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>
+  <p>L'Ami Doré — Catalogue en ligne · Prix en MAD</p>
+</footer>
+
+<!-- ============ WHATSAPP FLOTTANT ============ -->
+<!-- TODO Lolo : même numéro que ci-dessus -->
+<a class="whatsapp-float" href="https://wa.me/212600000000?text=Bonjour%2C%20je%20souhaite%20passer%20une%20commande%20chez%20L%27Ami%20Dor%C3%A9" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+  <svg viewBox="0 0 32 32"><path d="M16 3C9 3 3 9 3 16c0 2.6.8 5 2.1 7L3 29l6.2-2c2 .9 4.3 1.4 6.8 1.4 7 0 13-6 13-13S23 3 16 3zm0 23.7c-2.2 0-4.3-.6-6.1-1.7l-.4-.3-4.1 1.3 1.4-4-.3-.4C5.4 19.9 4.7 18 4.7 16c0-6.2 5.1-11.3 11.3-11.3S27.3 9.8 27.3 16 22.2 26.7 16 26.7zm6.2-8.4c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5 0-.2-.8-1.9-1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.5.1-.8.4-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.7.8.3 1.4.5 1.8.7.8.2 1.5.2 2 .1.6-.1 2-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+</a>
+
+<!-- ============ PRODUCT MODAL ============ -->
+<div class="modal-overlay" id="modalOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Fermer">&times;</button>
+    <div class="modal-media" id="modalMedia"></div>
+    <svg class="modal-decor" viewBox="0 0 140 18" aria-hidden="true">
+      <path d="M2 9 C 20 -2, 30 20, 48 9 S 70 -2, 88 9 S 110 20, 128 9" stroke-linecap="round"/>
+    </svg>
+    <div class="modal-body">
+      <p class="modal-category" id="modalCategory"></p>
+      <h2 id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-price" id="modalPrice"></p>
+      <p class="modal-tag">Fait maison · L'Ami Doré</p>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap 5.3.3 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Logique du catalogue (charge data/products.json) -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

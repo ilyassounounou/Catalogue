@@ -1,0 +1,101 @@
+/* ==========================================================
+   L'AMI DORÉ — Design tokens partagés
+   Ce fichier doit être chargé AVANT admin.css et avant le
+   <style> interne de index.html : il définit les variables
+   CSS (couleurs, ombres, polices) que ces deux endroits
+   utilisent. S'il est vide ou absent, admin.html perd toutes
+   ses couleurs et ses ombres (c'était le bug).
+
+   Ajout : jeu de variables pour le mode sombre, activé via
+   l'attribut data-theme="dark" sur <html>.
+   ========================================================== */
+
+:root{
+  --cream:        #FBF6EE;
+  --cream-deep:   #F3EADA;
+  --ink:          #2B1B14;
+  --ink-soft:     #7A6A5C;
+  --line:         #E7DCCB;
+  --gold:         #C9A24B;
+  --gold-deep:    #A6803A;
+  --burgundy:     #6E2B3A;
+
+  --font-display: 'Cormorant Garamond', 'Parisienne', serif;
+  --font-body:    'Jost', sans-serif;
+
+  --shadow-card:  0 6px 18px rgba(43, 27, 20, 0.08);
+  --shadow-modal: 0 40px 64px rgba(0, 0, 0, 0.15);
+
+  color-scheme: light;
+}
+
+:root[data-theme="dark"]{
+  --cream:        #1B1512;
+  --cream-deep:   #14100D;
+  --ink:          #F3EADA;
+  --ink-soft:     #B8A896;
+  --line:         #3A2E24;
+  --gold:         #D9B382;
+  --gold-deep:    #C9A24B;
+  --burgundy:     #E0899A;
+
+  --shadow-card:  0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-modal: 0 40px 64px rgba(0, 0, 0, 0.6);
+
+  color-scheme: dark;
+}
+
+*{ box-sizing: border-box; }
+
+html{ transition: background-color .2s ease; }
+
+body{
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  transition: background-color .2s ease, color .2s ease;
+}
+
+a{ color: inherit; }
+
+img{ max-width: 100%; display: block; }
+
+/* ---------- theme toggle button (shared) ---------- */
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:var(--cream);
+  color:var(--ink);
+  cursor:pointer;
+  transition:border-color .2s ease, background .2s ease, transform .15s ease;
+}
+.theme-toggle:hover{ border-color:var(--gold); transform:translateY(-1px); }
+.theme-toggle svg{ width:20px; height:20px; }
+.theme-toggle .icon-sun{ display:none; }
+:root[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+
+/* ---------- floating WhatsApp button (shared) ---------- */
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  z-index:1200;
+  transition:transform .2s ease;
+}
+.whatsapp-float:hover{ transform:scale(1.08); }
+.whatsapp-float svg{ width:30px; height:30px; fill:#fff; }

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Ami Doré — Admin</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ============ CONNECT SCREEN ============ -->
+<section class="connect-screen" id="connectScreen">
+  <div class="connect-card">
+    <p class="eyebrow">L'Ami Doré</p>
+    <h1 class="connect-title">Panneau d'administration</h1>
+    <p class="connect-sub">Connectez-vous à votre dépôt GitHub pour gérer le catalogue.</p>
+
+    <label>Utilisateur / organisation GitHub
+      <input type="text" id="fOwner" placeholder="ex: fatima-bakery">
+    </label>
+    <label>Nom du dépôt
+      <input type="text" id="fRepo" placeholder="ex: ami-dore-catalogue">
+    </label>
+    <label>Branche
+      <input type="text" id="fBranch" placeholder="main" value="main">
+    </label>
+    <label>Jeton d'accès personnel (Personal Access Token)
+      <input type="password" id="fToken" placeholder="ghp_xxxxxxxxxxxxxxxx">
+    </label>
+
+    <button class="btn-primary" id="connectBtn">Se connecter</button>
+    <p class="connect-note" id="connectError"></p>
+
+    <details class="help-details">
+      <summary>Comment créer un jeton d'accès ?</summary>
+      <ol>
+        <li>Allez sur GitHub → photo de profil → <strong>Settings</strong>.</li>
+        <li><strong>Developer settings</strong> → <strong>Personal access tokens</strong> → <strong>Fine-grained tokens</strong> → <strong>Generate new token</strong>.</li>
+        <li>Limitez-le à ce seul dépôt (<em>Only select repositories</em>).</li>
+        <li>Dans <strong>Permissions</strong> → <strong>Repository permissions</strong> → mettez <strong>Contents: Read and write</strong>.</li>
+        <li>Générez, copiez le jeton et collez-le ci-dessus. Il n'est jamais enregistré ni envoyé ailleurs qu'à GitHub, et il est effacé si vous fermez cet onglet.</li>
+      </ol>
+      <p class="help-warn">⚠️ Ne partagez jamais ce jeton et ne laissez pas ce lien admin.html accessible publiquement (ne le mettez pas dans vos menus de navigation).</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ ADMIN DASHBOARD ============ -->
+<section class="dashboard" id="dashboard" hidden>
+  <header class="admin-header">
+    <div>
+      <p class="eyebrow">L'Ami Doré · Admin</p>
+      <h1 class="admin-title">Gestion du catalogue</h1>
+    </div>
+    <div class="admin-header-actions">
+      <span class="sync-status" id="syncStatus"></span>
+      <button class="btn-ghost" id="disconnectBtn">Se déconnecter</button>
+    </div>
+  </header>
+
+  <div class="admin-grid">
+    <!-- FORM -->
+    <div class="form-panel">
+      <h2 id="formTitle">Ajouter un produit</h2>
+      <form id="productForm">
+        <input type="hidden" id="fId">
+
+        <label>Nom du produit
+          <input type="text" id="fName" required placeholder="ex: Croissant au Beurre">
+        </label>
+
+        <div class="field-row">
+          <label>Prix (MAD)
+            <input type="number" id="fPrice" required min="0" step="0.5" placeholder="ex: 8">
+          </label>
+          <label>Catégorie
+            <input type="text" id="fCategory" required placeholder="ex: Viennoiseries" list="categoryList">
+            <datalist id="categoryList"></datalist>
+          </label>
+        </div>
+
+        <label>Description
+          <textarea id="fDescription" rows="3" placeholder="Description courte du produit"></textarea>
+        </label>
+
+        <label>Photo du produit
+          <input type="file" id="fImage" accept="image/*">
+        </label>
+        <div class="image-preview" id="imagePreview"></div>
+        <p class="field-hint">Laissez vide pour garder / générer un badge doré automatique.</p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" id="submitBtn">Ajouter au catalogue</button>
+          <button type="button" class="btn-ghost" id="cancelEditBtn" hidden>Annuler la modification</button>
+        </div>
+        <p class="form-note" id="formNote"></p>
+      </form>
+    </div>
+
+    <!-- LIST -->
+    <div class="list-panel">
+      <div class="list-panel-head">
+        <h2>Produits (<span id="productCount">0</span>)</h2>
+        <input type="text" id="adminSearch" placeholder="Rechercher…">
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Nom</th>
+              <th>Catégorie</th>
+              <th>Prix</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="productTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- confirm delete -->
+<div class="modal-overlay" id="confirmOverlay" hidden>
+  <div class="confirm-box">
+    <p id="confirmText">Supprimer ce produit ?</p>
+    <div class="form-actions">
+      <button class="btn-danger" id="confirmDeleteBtn">Supprimer</button>
+      <button class="btn-ghost" id="cancelDeleteBtn">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
